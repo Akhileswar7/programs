@@ -49,5 +49,44 @@ if(num1==rnum):
 else:
     print(num1,"is a not armstrong")
 
+#calculate of triangle,square,rectangle
+
+b=int(input("Enter base"))
+h=int(input("Enter height"))
+print(area:=(0.5*b*h))
+
+l=int(input("Enter length"))
+b=int(input("Enter breadth"))
+print(area:=(l*b))
+
+s=int(input("Enter length of a side"))
+print(area:=(s*s))
     
-    
+#swap 3 numbers
+a=int(input("Enter num1"))
+b=int(input("Enter num2"))
+c=int(input("Enter num3"))
+if a < b:
+    if b < c:
+        print (a,b,c)
+    else:
+        if a < c:
+            print (a,c, b)
+        else:
+            print (c,a,b)
+else:
+    if c < b:
+        print (c,b,a)
+    else:
+        if c < a:
+            print (b,c,a)
+        else:
+            print (b,a,c)
+
+
+
+
+
+
+
+
