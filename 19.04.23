@@ -25,6 +25,7 @@ for i in range(1,s+1):
 #Palindrome
 num=int(input("Enter num"))
 num1=num
+rnum=0
 while(num>0):
     r=num%10
     rnum=rnum*10+r
@@ -34,6 +35,19 @@ if(num1==rnum):
 else:
     print(num1,"is a not palindrome")
     
- 
+#armstrong number
+
+num=int(input("Enter three digit num"))
+num1=num
+sum=0
+while(num>0):
+    r=num%10
+    sum=sum+r ** 3;
+    num=num//10
+if(num1==rnum):
+    print(num1,"is a armstrong")
+else:
+    print(num1,"is a not armstrong")
+
     
     
