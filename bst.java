@@ -1,63 +1,90 @@
-package BinarySearch;
+public class bst {
+    int value;
+    bst leftChild;
+    bst rightChild;
 
+    bst(int val) {
+        this.value = val;
+        this.leftChild = null;
+        this.rightChild = null;
+    }
 
+    public static bst insert(int value, bst current) {
+        if (current == null) {
+            bst newNode = new bst(value);
+            return newNode;
+        } else {
+            if (value < current.value)
+                current.leftChild = insert(value, current.leftChild);
+            else
+                current.rightChild = insert(value, current.rightChild);
+        }
+        return current;
+    }
 
+    public static boolean search(int key, bst current) {
+        if (current == null)
+            return false;
+        if (current.value == key)
+            return true;
+        else {
+            if (key < current.value)
+                return search(key, current.leftChild);
+            else
+                return search(key, current.rightChild);
+        }
+    }
 
-class Node{
-	Node left,right;
-	int data;
-	public Node(int data) {
-		this.data=data;
-		left=right=null;
-	}
-}
-public class BinarySearchTree {
-	Node root;
-	public BinarySearchTree() {
-		root=null;
-	}
-	void insert(int data) {
-		root=insertRecursive(root,data);
-		
-	}
-	Node insertRecursive(Node root,int data ) {
-		if(root==null) {
-			root=new Node(data);
-			return root;
-		}
-		if(data<root.data) {
-			root.left=insertRecursive(root.left,data);
-		}
-		else if(data>root.data) {
-			root.right=insertRecursive(root.right,data);
-		}
-		return root;
-	}
-	void preorder(Node root) {
-		if(root!=null) {
-			System.out.print(root.data+" ");
-			preorder(root.left);
-			preorder(root.right);
-		}
-	}
-	
+    public static void preorder(bst current) {
+        if (current == null)
+            return;
+        else {
+            System.out.print(current.value + " ");
+            preorder(current.leftChild);
+            preorder(current.rightChild);
+        }
+    }
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		BinarySearchTree bst=new BinarySearchTree();
-		bst.insert(5);
-		bst.insert(3);
-		bst.insert(8);
-		bst.insert(2);
-		bst.insert(4);
-		bst.insert(7);
-		bst.insert(9);
-		bst.preorder(bst.root);
-		
-		// preorder-5,3,2,4,8,7,9
-		
-		
+    public static void postorder(bst current) {
+        if (current == null)
+            return;
+        else {
+            postorder(current.leftChild);
+            postorder(current.rightChild);
+            System.out.print(current.value + " ");
+        }
+    }
 
-	}
+    public static void inorder(bst current) {
+        if (current == null)
+            return;
+        else {
+            inorder(current.leftChild);
+            System.out.print(current.value + " ");
+            inorder(current.rightChild);
+        }
+    }
 
+    public static void main(String args[]) {
+        // constructing the tree
+        bst root = new bst(12);
+        root = insert(7, root);
+        root = insert(20, root);
+        root = insert(5, root);
+        root = insert(9, root);
+        root = insert(21, root);
+        System.out.println(search(7, root));
+        System.out.println(search(9, root));
+
+        // Traversals
+        System.out.println("\n\nAfter deletion");
+        System.out.print("\nPreorder Traversal: ");
+        preorder(root);
+        System.out.print("\nPostorder Traversal: ");
+        postorder(root);
+        System.out.print("\nInorder Traversal: ");
+        inorder(root);
+        System.out.print("\nLevel Order Traversal: ");
+        // levelOrder(root);
+    }
 }
